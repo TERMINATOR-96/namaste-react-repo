@@ -17,5 +17,8 @@
     "pandey"
   ],
   "author": "Rahul Pandey",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.13.0"
+  }
 }

@@ -22,3 +22,21 @@ git branch
 
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 npm init
+
+"package.json is a configuration for npm(not node package manager)."
+
+There are two types of dependencies-
+1. dev dependency (-D for development) eg. npm install -D parcel
+2. normal dependency (for production)
+
+In package.json-
+1. caret(^)- if we use caret then in case of minor upgrade like from 2.8.3 to 2.8.4, parcel will upgrade automatically (recommended).
+2. tilde(~)- if we use tilde then in case of major upgrade like from 2.8.3 to 3.0.0, parcel will upgrade automatically.
+Note- Do not upgrade to major versions automatically since it may have major changes.
+
+Difference between package.json and package-lock.json-
+package-lock.json keeps the track of exact version installed in our system whereas package.json keeps upgrading the version.
+
+what is transitive dependencies?
+our parcel is dependent on parcel which in turn is dependent on other packages. this is known as transitive dependencies.
+
