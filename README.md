@@ -87,3 +87,17 @@ cdn links are not the preferred way to bring React or ReactDOM into our project.
 
 # React Functional Components
 - A function that returns a JSX in react is react functional component or a function that returns a react element.
+
+# Two types of Export/Import
+- Default Export/Import
+export default Component;
+import Component from "path";
+- Named Export/Import
+export const Component;
+import {Component} from "Path";
+
+# React Hooks
+- Normal javascript utility functions
+- useState() -> superpowerful state variables in react
+- useEffect()
+- whenever the state variable updates, the react rerenders the component
