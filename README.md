@@ -20,7 +20,6 @@ git push oigin main
 git checkout -b development-branch main
 git branch
 
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 npm init
 
 npx parcel index.html - just like npm, we have npx. npx means executing a package whereas npm is used to install the package. build a development build and host that build to localhost:1234.
@@ -101,3 +100,6 @@ import {Component} from "Path";
 - useState() -> superpowerful state variables in react
 - useEffect()
 - whenever the state variable updates, the react rerenders the component
+
+# Why react is fast?
+This is because react does efficient DOM manipulation because it has a virtual DOM.
