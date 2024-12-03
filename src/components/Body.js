@@ -2,13 +2,13 @@ import resList from "../utils/mockData";
 import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
+import {Link} from "react-router-dom";
 
 const Body = () => {
     //local state variable - super powerful variable
+    const [searchText, setSearchText] = useState("");
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
-    const [searchText, setSearchText] = useState("");
 
     //whenever the state variable update, react triggers a reconciliation cycle(re-renders the component)
     console.log("Body rendered.");
@@ -22,7 +22,10 @@ const Body = () => {
         setFilteredRestaurants(resList);
     }
 
-	return listOfRestaurants.length === 0 ? <Shimmer /> : (
+    if(listOfRestaurants.length === 0)
+        return <Shimmer />;
+
+	return (
 		<div className="body">
 			<div className="filter">
                 <div className="search">
@@ -57,7 +60,9 @@ const Body = () => {
 			<div className="res-container">
             {
                 filteredRestaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                    <Link to="/restaurants/{123}">
+                        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                    </Link>
                 ))
             }
 			</div>

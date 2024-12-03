@@ -103,3 +103,7 @@ import {Component} from "Path";
 
 # Why react is fast?
 This is because react does efficient DOM manipulation because it has a virtual DOM.
+
+# Routing in web apps are of two types
+- Client side routing
+- Server side routing
