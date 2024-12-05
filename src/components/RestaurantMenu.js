@@ -1,7 +1,6 @@
 import Shimmer from "./Shimmer";
-import resList from "../utils/mockData";
-import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => { 
     const {resId} = useParams();
@@ -9,6 +8,7 @@ const RestaurantMenu = () => {
 
     const resInfo = useRestaurantMenu(resId);
 
+    //commenting this one and moving the functioning to ../utils/useRestaurantMenu.js for optimizing our app
     // const [resInfo, setResInfo] = useState(null);
     // useEffect(() => {
     //     fetchMenu();

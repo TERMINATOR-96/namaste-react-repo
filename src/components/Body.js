@@ -3,28 +3,37 @@ import {useState, useEffect} from "react";
 import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import {Link} from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     //local state variable - super powerful variable
     const [searchText, setSearchText] = useState("");
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
     //whenever the state variable update, react triggers a reconciliation cycle(re-renders the component)
     console.log("Body rendered.");
 
     useEffect(() => {
         fetchData();
     }, []);
-
     const fetchData = async () => {
         setListOfRestaurants(resList);
         setFilteredRestaurants(resList);
     }
 
+    //online status logic
+    const onlineStatus = useOnlineStatus();
+    if(onlineStatus === false) {
+        console.log("Your device is offline!!");
+        return (
+            <h1>
+                Looks like you are offline!! Please check your internet connection.
+            </h1>
+        );
+    }
+
     if(listOfRestaurants.length === 0)
         return <Shimmer />;
-
 	return (
 		<div className="body">
 			<div className="filter">
