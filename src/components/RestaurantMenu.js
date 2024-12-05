@@ -3,20 +3,20 @@ import resList from "../utils/mockData";
 import {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 
-const RestaurantMenu = () => {
-    const [resInfo, setResInfo] = useState(null);
-    
+const RestaurantMenu = () => { 
     const {resId} = useParams();
     console.log("resId is:", resId); //prints resId
 
-    useEffect(() => {
-        fetchMenu();
-    }, []); // Empty dependency array ensures this runs only once
+    const resInfo = useRestaurantMenu(resId);
 
-    const fetchMenu = () => {
-        // Using mock data from utils folder
-        setResInfo(resList[0]);
-    };
+    // const [resInfo, setResInfo] = useState(null);
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []); // Empty dependency array ensures this runs only once
+    // const fetchMenu = () => {
+    //     // Using mock data from utils folder
+    //     setResInfo(resList[0]);
+    // };
 
     if (resInfo === null) return <Shimmer />;
 
