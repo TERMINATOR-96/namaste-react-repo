@@ -1,24 +1,31 @@
-import { LOGO_URL } from "../utils/constants";
-import { useState, useEffect } from "react";
+import {useContext} from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { LOGO_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext.js";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 
 //Component is a normal javascript function that returns ssome JSX
 const Header = () => {
-console.log("Header render");
+	console.log("Header render");
 
-//if no dependency array => useEffect is called on every render
-//if dependency array is empty = [] => useEffect is called on initial render(just once)
-//if dependency array is [btnNameReact] => called every time btnNameReact is updated
-useEffect(() => {
-	console.log("useEffect called");
-}, []);
+	//if no dependency array => useEffect is called on every render
+	//if dependency array is empty = [] => useEffect is called on initial render(just once)
+	//if dependency array is [btnNameReact] => called every time btnNameReact is updated
+	useEffect(() => {
+		console.log("useEffect called");
+	}, []);
 
-//never use your useState hook inside a condition
-//and also never create it within function or for loop
-let [btnName, setBtnName] = useState("Login");
+	//never use your useState hook inside a condition
+	//and also never create it within function or for loop
+	let [btnName, setBtnName] = useState("Login");
 
-const onlineStatus = useOnlineStatus();
+	const onlineStatus = useOnlineStatus();
+
+	//taking data from UserContext which is react context used to avoid props drilling
+	const data = useContext(UserContext);
+	const {loggedInUser} = data;
+	console.log(data);
 
 	return (
 		<div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50">
@@ -46,6 +53,7 @@ const onlineStatus = useOnlineStatus();
 					<button className="login" onClick={() => {
 						(btnName == "Login") ? setBtnName("Logout") : setBtnName("Login");
 					}}>{btnName}</button>
+					<li className="px-4 font-bold">{loggedInUser}</li>
 				</ul>
 			</div>
 		</div>

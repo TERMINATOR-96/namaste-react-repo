@@ -1,9 +1,11 @@
+import Shimmer from "./Shimmer";
+import {useContext} from "react";
+import {Link} from "react-router-dom";
 import resList from "../utils/mockData";
 import {useState, useEffect} from "react";
-import Shimmer from "./Shimmer";
-import RestaurantCard from "./RestaurantCard";
-import {Link} from "react-router-dom";
+import UserContext from "../utils/UserContext";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 
 const Body = () => {
     //local state variable - super powerful variable
@@ -12,6 +14,8 @@ const Body = () => {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     //whenever the state variable update, react triggers a reconciliation cycle(re-renders the component)
     console.log("Body rendered.");
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     useEffect(() => {
         fetchData();
@@ -31,6 +35,8 @@ const Body = () => {
             </h1>
         );
     }
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
 
     if(listOfRestaurants.length === 0)
         return <Shimmer />;
@@ -67,13 +73,26 @@ const Body = () => {
                             Top Rated Restaurants
                     </button>
                 </div>
+
+                <div className="search m-4 p-4 flex items-center">
+                    <label>Username : </label>
+                    <input className="border border-black p-2" 
+                    value={loggedInUser}
+                    onChange={(e) => setUserName(e.target.value)}></input>
+                </div>
             </div>
 
 			<div className="flex flex-wrap">
             {
                 filteredRestaurants.map((restaurant) => (
                     <Link to="/restaurants/{123}">
-                        <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                        {/** if the restaurant is promoted then add a promoted label to it  */}
+                        {
+                            restaurant.data.promoted ? (
+                                <RestaurantCardPromoted resData={restaurant} /> 
+                            ) : (
+                                <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                            )}
                     </Link>
                 ))
             }

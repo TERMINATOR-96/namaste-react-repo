@@ -107,3 +107,14 @@ This is because react does efficient DOM manipulation because it has a virtual D
 # Routing in web apps are of two types
 - Client side routing
 - Server side routing
+
+# Higher Order Component
+- Higher order component is a function that takes a component, enhances and returns a new component.
+
+# Note-
+- Everything is a component in react and components have there own state and props.
+
+# Props drilling
+- Passing props from parent to grand children through intermediate parents is called as props drilling.
+- We should avoid props drilling.
+- React context is used to avoid props drilling and it is like global place where data is kept and is utilized at any level deep.
