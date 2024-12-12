@@ -4,6 +4,7 @@ const resList = [
 		data:{
 			name: "KFC",
 			id: "492159",
+			promoted: true,
 			cuisines: ["Burgers", "Biryani", "American", "Snacks", "Fast Food"],
 			costForTwo: 40000,
 			deliveryTime: 36,
@@ -17,6 +18,7 @@ const resList = [
 		data:{
 			name: "Meghana Foods",
 			id: "389322",
+			promoted: false,
 			cuisines: ["Biryanis", "North Indian", "Asian"],
 			costForTwo: 50000,
 			deliveryTime: 38,
