@@ -1,9 +1,12 @@
 import React from "react";
-import {useState, useEffect} from "react";
+import {Provider} from "react-redux";
 import { lazy, Suspense } from "react";
+import Cart from "./components/Cart.js";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body.js";
+import {useState, useEffect} from "react";
 import Error from "./components/Error.js";
+import appStore from "./utils/appStore.js";
 import Header from "./components/Header.js";
 import Contact from "./components/Contact.js";
 import UserContext from "./utils/UserContext.js";
@@ -33,12 +36,14 @@ const AppLayout = () => {
 	}, []);
 	
 	return(
-		<UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-			<div className="app">
-				<Header />
-				<Outlet />
-			</div>
-		</UserContext.Provider>
+		<Provider store={appStore}>
+			<UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+				<div className="app">
+					<Header />
+					<Outlet />
+				</div>
+			</UserContext.Provider>
+		</Provider>
 	);
 };
 
@@ -66,6 +71,10 @@ const appRouter = createBrowserRouter([
 			{
 				path: "/restaurants/:resId",
 				element: <RestaurantMenu />
+			},
+			{
+				path: "/cart",
+				element: <Cart />
 			}
 		],
 		errorElement: <Error />

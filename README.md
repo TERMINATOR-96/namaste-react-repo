@@ -118,3 +118,11 @@ This is because react does efficient DOM manipulation because it has a virtual D
 - Passing props from parent to grand children through intermediate parents is called as props drilling.
 - We should avoid props drilling.
 - React context is used to avoid props drilling and it is like global place where data is kept and is utilized at any level deep.
+
+# Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch (action)
+- Selector
