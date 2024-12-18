@@ -118,3 +118,28 @@ This is because react does efficient DOM manipulation because it has a virtual D
 - Passing props from parent to grand children through intermediate parents is called as props drilling.
 - We should avoid props drilling.
 - React context is used to avoid props drilling and it is like global place where data is kept and is utilized at any level deep.
+
+# Redux Toolkit
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (cartSlice)
+- dispatch (action)
+- Selector
+
+# Types of testing (developer)
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e Testing
+
+# Setting up testing in our app
+- Install react testing library
+- Installed jest
+- Installed Babel dependencies
+- Configure Babel
+- Configure Parcel config file to disable default babel transpilation
+- Jest - npx test --init
+- Install jsdom library
+- Install @babel/preset-react - to make JSX work in test-cases
+- Include @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom using cmd- npm install -D @testing-library/jest-dom

@@ -5,4 +5,7 @@ export const styleCard = {
 	backgroundColor:"#f0f0f0"
 };
 
+export const CDN_URL = 
+"";
+
 

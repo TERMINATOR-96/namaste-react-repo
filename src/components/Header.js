@@ -1,5 +1,6 @@
 import {useContext} from "react";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 import { useState, useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext.js";
@@ -27,6 +28,11 @@ const Header = () => {
 	const {loggedInUser} = data;
 	console.log(data);
 
+	//Selector
+	//we are subscribing to our store using a selector
+	const cartItems = useSelector((store) => store.cart.items);
+	console.log(cartItems);
+
 	return (
 		<div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg-green-50">
 			<div className="logo-container">
@@ -49,7 +55,9 @@ const Header = () => {
 					<li className="px-3">
 						<Link to="/Grocery">Grocery</Link>
 					</li>
-					<li className="px-3">Cart</li>
+					<li className="px-3 font-bold text-xl">
+						<Link to="/cart">Cart - ({cartItems.length} items)</Link>
+					</li>
 					<button className="login" onClick={() => {
 						(btnName == "Login") ? setBtnName("Logout") : setBtnName("Login");
 					}}>{btnName}</button>
