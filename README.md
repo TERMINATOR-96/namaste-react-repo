@@ -126,3 +126,20 @@ This is because react does efficient DOM manipulation because it has a virtual D
 - Slice (cartSlice)
 - dispatch (action)
 - Selector
+
+# Types of testing (developer)
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e Testing
+
+# Setting up testing in our app
+- Install react testing library
+- Installed jest
+- Installed Babel dependencies
+- Configure Babel
+- Configure Parcel config file to disable default babel transpilation
+- Jest - npx test --init
+- Install jsdom library
+- Install @babel/preset-react - to make JSX work in test-cases
+- Include @babel/preset-react inside my babel config
+- Install @testing-library/jest-dom using cmd- npm install -D @testing-library/jest-dom
